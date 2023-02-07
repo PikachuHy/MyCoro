@@ -38,7 +38,7 @@ public:
     }
     template<typename CoroHandle>
     auto await_suspend(CoroHandle h) noexcept {
-        return h.promise().handle_;
+        return h;
     }
     auto await_resume() noexcept {
         handle_.resume();
@@ -113,11 +113,11 @@ public:
         auto final_suspend() noexcept {
             return std::experimental::suspend_always{};
         }
-        void return_value(Void) noexcept {
-            static_assert(sizeof...(Args) == 0);
-        }
+        //        void return_value(Args... data) noexcept {
+        //
+        //        }
         void return_value(std::tuple<Args...> data) noexcept {
-            data_ = std::move(data);
+            //            data_ = std::move(data);
         }
         Task<Args...> get_return_object() {
             return Task<Args...>(Handle::from_promise(*this));
