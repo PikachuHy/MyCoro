@@ -1,2 +1,5 @@
-add_library(my_coro INTERFACE)
-target_include_directories(my_coro INTERFACE .)
+add_library(coro INTERFACE)
+target_include_directories(coro INTERFACE .)
+target_link_libraries(coro INTERFACE spdlog::spdlog)
+target_compile_definitions(coro INTERFACE SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
+target_compile_definitions(coro INTERFACE SPDLOG_FUNCTION=__PRETTY_FUNCTION__)

@@ -1,0 +1,10 @@
+#pragma once
+#include <spdlog/spdlog.h>
+
+#define CORO_LOG_CRITICAL SPDLOG_CRITICAL
+#define CORO_LOG_ERROR SPDLOG_ERROR
+#define CORO_LOG_WARN SPDLOG_WARN
+#define CORO_LOG_INFO SPDLOG_INFO
+#define CORO_LOG_DEBUG SPDLOG_DEBUG
+#define CORO_LOG_TRACE SPDLOG_TRACE
+#define CORO_LOG(level, ...) CORO_LOG_##level(__VA_ARGS__)
